@@ -1,0 +1,68 @@
+.search-btn {
+        background-color: #fe424d;
+        color: #fff;
+        border-radius: 25px;
+        padding: 0 1rem 0 1rem;
+    }
+     .search-btn:hover {
+        background-color: #fe424d;
+        color: #fff;
+    }
+    .search-btn i {
+        display: inline;
+        margin-right: 0.5rem;
+    }
+    .search-inp {
+        border-radius: 25px;
+        padding: 0.5rem 3rem 0.5rem 3rem;
+        font-size: 1rem;
+    }
+
+     /* Mobile view fixes */
+@media (max-width: 768px) {
+    nav {
+        display: flex;
+        flex-direction: column; /* Stack items vertically */
+        align-items: stretch;   /* Full width */
+        padding: 10px;
+        background-color: #fff;
+    }
+    .main {
+        background-color: #fff;
+    }
+
+    /* Make search bar full-width */
+    .nav-search {
+        display: flex;
+        width: 100%;
+        margin: 10px 5px;
+        background-color: #fff;
+        margin-top: 0;
+    }
+
+    .nav-search input {
+        flex: 1;
+        min-width: 0; /* Prevent overflow */
+        background-color: #fff;
+        margin-top: 0;
+    }
+
+    /* Move nav links into a vertical layout */
+    .nav-left,
+    .nav-right {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+        width: 100%;
+        margin-top: 0;
+        background-color: #fff;
+    }
+
+    /* Make sure text doesn't squish */
+    .nav-left a,
+    .nav-right a {
+        white-space: nowrap;
+        background-color: #fff;
+    }
+}

@@ -1,0 +1,108 @@
+<% layout("/layouts/boilerplate.ejs") %>
+
+    <body>
+       
+        <div id="filters" class="category-scroll" >
+            <div class="filter" data-category="Trending">
+                <i class="fa-solid fa-fire"></i>
+                <p>Trending</p>
+            </div>
+            <div class="filter" data-category="Rooms">
+                <i class="fa-solid fa-bed"></i>
+                <p>Rooms</p>
+            </div>
+            <div class="filter" data-category="Iconic cities">
+                <i class="fa-solid fa-mountain-city"></i>
+                <p>Iconic cities</p>
+            </div>
+            <div class="filter" data-category="Mountains">
+                <i class="fa-solid fa-mountain"></i>
+                <p>Mountains</p>
+            </div>
+            <div class="filter" data-category="Castles">
+                <i class="fa-solid fa-chess-rook"></i>
+                <p>castles</p>
+            </div>
+            <div class="filter" data-category="Amazing pools">
+                <i class="fa-solid fa-person-swimming"></i>
+                <p>Amazing pools</p>
+            </div>
+            <div class="filter" data-category="Camping">
+                <i class="fa-solid fa-campground"></i>
+                <p>Camping</p>
+            </div>
+            <div class="filter" data-category="Farms">
+                <i class="fa-solid fa-cow"></i>
+                <p>Farms</p>
+            </div>
+            <div class="filter" data-category="Arctic">
+                <i class="fa-solid fa-snowflake"></i>
+                <p>Arctic</p>
+            </div>
+            <div class="filter" data-category="Domes">
+                <i class="fa-solid fa-igloo"></i>
+                <p>Domes</p>
+            </div>
+            <div class="filter" data-category="Boats">
+                <i class="fa-solid fa-ship"></i>
+                <p>Boats</p>
+            </div>
+
+
+            <div class="tax-toggle">
+                <div class="form-check-reverse form-switch">
+                    <input class="form-check-input" type="checkbox" role="switch" id="switchCheckDefault">
+                    <label class="form-check-label" for="switchCheckDefault">Display total after taxes </label>
+                </div>
+            </div>
+        </div>
+
+        <div class="row row-cols-lg-3 row-cols-md-2 row-cols-sm-1 mt-3">
+            <% if(listings.length==0 ) {%>
+                <h4>The listing you're searching for is not available!</h4>
+                <%} else {%>
+                    <% for(let listing of listings) { %>
+                        <a href="/listings/<%= listing.id%>" class="listing-link">
+                            <div class="card col listing-card">
+                                <img src="<%= listing.image.url %>" class="card-img-top" alt="Listing_image"
+                                    style="height: 20rem;">
+                                <div class="card-img-overlay"></div>
+                                <div class="card-body">
+                                    <p class="card-text">
+                                        <b>
+                                            <%= listing.title%>
+                                        </b> <br>
+                                        &#8377; <%= listing.price.toLocaleString("en-IN") %> / night
+                                            <i class="tax-info">&nbsp; &nbsp;+18% GST</i>
+                                    </p>
+                                </div>
+                            </div>
+                        </a>
+                        <% } %>
+                            <%} %>
+
+        </div>
+
+        <script>
+            let taxSwitch = document.getElementById("switchCheckDefault")
+            taxSwitch.addEventListener("click", () => {
+                let taxInfo = document.getElementsByClassName("tax-info");
+                for (info of taxInfo) {
+                    if (info.style.display != "inline") {
+                        info.style.display = "inline";
+                    } else {
+                        info.style.display = "none";
+                    }
+
+                }
+            });
+            document.querySelectorAll('.filter').forEach(filter => {
+                filter.addEventListener('click', () => {
+                    const category = filter.getAttribute('data-category');
+                    window.location.href = `/listings/find?category=${encodeURIComponent(category)}`;
+                });
+            });
+
+        </script>
+
+    </body>

@@ -1,0 +1,52 @@
+/* setting show page for mobile  */
+
+   /* Mobile: Remove extra offsets and make full width */
+@media (max-width: 768px) {
+    .offset-3,
+    .offset-5,
+    .col-6,
+    .col-8 {
+        margin-left: 0 !important;
+        flex: 0 0 100% !important;
+        max-width: 100% !important;
+    }
+
+    .title, 
+    .show-card,
+    .mb-3 {
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+
+    /* Reviews cards take full width */
+    .row .card.col-5 {
+        flex: 0 0 100% !important;
+        max-width: 100% !important;
+        margin-left: 0 !important;
+    }
+    #map {
+        width: 100% !important;
+        height: 300px; /* or whatever height fits mobile nicely */
+    }
+    .btns {
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 10px; /* space between buttons */
+        padding: 0 10px;
+    }
+
+    /* Edit button full width */
+    .btns .edit-btn {
+        flex: 1;
+        max-width: 100% !important;
+        margin-left: 0 !important;
+    }
+
+    /* Delete button full width */
+    .btns .delete-btn{
+        flex: 1;
+        max-width: 100% !important;
+        margin-left: 0 !important;
+    }
+}
