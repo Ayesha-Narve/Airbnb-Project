@@ -59,7 +59,7 @@
 
         <div class="row row-cols-lg-3 row-cols-md-2 row-cols-sm-1 mt-3">
             <% if(listings.length==0 ) {%>
-                <h4>The listing you're searching for is not available!</h4>
+                <h4>The listing is not available!</h4>
                 <%} else {%>
                     <% for(let listing of listings) { %>
                         <a href="/listings/<%= listing.id%>" class="listing-link">
