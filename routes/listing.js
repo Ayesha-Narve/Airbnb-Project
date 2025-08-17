@@ -8,13 +8,16 @@ const multer = require("multer");
 const {storage} = require("../cloudConfig.js");
 const upload = multer({storage});
 
+//router.get("https://airniche-niche-personalized-stays-in-the.onrender.com", wrapAsync(listingController.index))
+
 router.route("/")
     .get( wrapAsync(listingController.index))   //INDEX Route
     .post(isLoggedIn ,
     upload.single('listing[image]'), //multer process this and convert to req.file
       validateListing,
      wrapAsync(listingController.createNewListing));  //CREATE Route
-    
+
+  
 
 //NEW Route
 router.get("/new",isLoggedIn , listingController.renderNewForm );

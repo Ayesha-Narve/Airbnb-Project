@@ -64,10 +64,6 @@ const sessionOptions = {
 }
 
 
-// app.get('/', (req, res) => {
-//     res.send("Root is working");
-// });
-
 app.use( session(sessionOptions));
 app.use(flash());
 
@@ -85,6 +81,10 @@ app.use((req, res, next) => {
     next();
 });
 
+app.get("/", (req, res) => {
+    res.redirect("/listings");
+});
+
 app.get("/listings/find", async (req, res) => {
     const { category } = req.query;
     let query = {};
@@ -96,7 +96,6 @@ app.get("/listings/find", async (req, res) => {
     const listings = await Listing.find(query);
     res.render("listings/index", { listings });
 });
-
 
 app.use("/listings", listingsRoute);
 app.use("/listings/:id/reviews", reviewsRoute);
